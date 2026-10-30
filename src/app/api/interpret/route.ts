@@ -20,20 +20,22 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const prompt = `You are a mysterious Halloween tarot reader. The querent asks: "${question}"
+    const prompt = `The querent asks: "${question}"
 
-They drew a three-card spread (Past, Present, Future):
+They have drawn a three-card spread (Past, Present, Future):
 
-${cards.map((c, i) => `${i + 1}. ${c.position}: ${c.card.name} (${c.reversed ? "Reversed" : "Upright"}) - Keywords: ${c.card.keywords.join(", ")}`).join("\n")}
+${cards.map((c, i) => `${i + 1}. ${c.position}: ${c.card.name} (${c.reversed ? "Reversed" : "Upright"}) — Keywords: ${c.card.keywords.join(", ")}`).join("\n")}
 
-Provide a insightful, atmospheric interpretation in English. Structure it as:
+Speak the reading in the language and spirit of Carl Jung’s Red Book. Let the cards be living figures of the soul. Address the querent as one who has descended into the depths. Use the voice of active imagination: mythic, alchemical, and intimate. Invoke the tension between the spirit of the times and the spirit of the depths. Let Philemon, the soul, the anima/animus, the shadow, and the Self appear where they are called. Do not explain Jung; embody the Red Book’s way of seeing.
+
+Structure the reading exactly as:
 - Overall message
 - Past
-- Present  
+- Present
 - Future
 - Final advice
 
-Keep the tone mystical, warm, and Halloween-themed without being scary.`;
+Keep the tone solemn, luminous, and true to the Red Book — neither academic nor casual.`;
 
     const response = await fetch("https://api.x.ai/v1/responses", {
       method: "POST",
@@ -46,7 +48,7 @@ Keep the tone mystical, warm, and Halloween-themed without being scary.`;
         input: [
           {
             role: "system",
-            content: "You are a wise, atmospheric tarot interpreter with a Halloween spirit. Respond only with the structured reading.",
+            content: "You are an interpreter who speaks from the depths in the manner of Carl Jung’s Red Book. Your voice is that of the soul addressing itself through symbols. You do not lecture; you reveal. Respond only with the structured reading.",
           },
           {
             role: "user",
