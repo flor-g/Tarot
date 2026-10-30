@@ -7,12 +7,14 @@ export default function Home() {
   const [question, setQuestion] = useState("");
   const [cards, setCards] = useState<DrawnCard[] | null>(null);
   const [interpretation, setInterpretation] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleDraw = async () => {
     if (!question.trim()) return;
     setLoading(true);
     setInterpretation(null);
+    setError(null);
 
     const drawn = drawThreeCards();
     setCards(drawn);
@@ -24,9 +26,15 @@ export default function Home() {
         body: JSON.stringify({ question, cards: drawn }),
       });
       const data = await res.json();
+
+      if (!res.ok || data.error) {
+        setError(data.error || "The spirits are silent for now. Please try again.");
+        return;
+      }
+
       setInterpretation(data.interpretation);
     } catch (e) {
-      setInterpretation("The spirits are silent for now. Please try again.");
+      setError("The spirits are silent for now. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -79,19 +87,36 @@ export default function Home() {
                 <div className="text-xl font-bold text-orange-300 mb-1">
                   {drawn.card.name}
                 </div>
-                <div className="text-sm text-orange-400">
+                <div className="text-sm text-orange-400 mb-2">
                   {drawn.reversed ? "Reversed" : "Upright"}
                 </div>
-                <div className="mt-2 text-xs text-purple-200">
+                <div className="mt-1 text-xs text-purple-200 mb-3">
                   {drawn.card.keywords.join(" · ")}
                 </div>
+                <p className="text-sm text-orange-100 leading-relaxed text-left">
+                  {drawn.reversed
+                    ? drawn.card.reversedMeaning
+                    : drawn.card.uprightMeaning}
+                </p>
               </div>
             ))}
           </div>
         )}
 
+        {error && (
+          <div className="mt-10 bg-red-950/60 border border-red-500/40 rounded-xl p-6">
+            <h2 className="text-xl text-red-300 mb-2">Reading Unavailable</h2>
+            <p className="text-orange-100">{error}</p>
+            {error.includes("XAI_API_KEY") && (
+              <p className="mt-3 text-sm text-purple-300">
+                Add the environment variable in your Vercel project settings and redeploy.
+              </p>
+            )}
+          </div>
+        )}
+
         {interpretation && (
-          <div className="mt-10 bg-black/70 border border-purple-500/40 rounded-xl p-6 prose prose-invert max-w-none">
+          <div className="mt-10 bg-black/70 border border-purple-500/40 rounded-xl p-6">
             <h2 className="text-2xl text-orange-400 mb-4">The Reading</h2>
             <div className="whitespace-pre-wrap text-orange-100 leading-relaxed">
               {interpretation}
