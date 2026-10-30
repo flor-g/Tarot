@@ -2,11 +2,23 @@
 
 A mystical three-card Major Arcana tarot reading web app with a Halloween theme.
 
-## Features
-- 3-card spread (Past · Present · Future)
-- 22 Major Arcana cards
-- Halloween aesthetic
-- Real Grok (xAI) API interpretation
+## Card Art Style
+
+**Mondrian-inspired geometric abstraction + Halloween color palette**
+
+### Fixed Color Palette (use consistently across all cards)
+
+| Name | Hex | Usage |
+|------|-----|-------|
+| Pumpkin Orange | `#F97316` | Primary accent, shapes, symbols |
+| Deep Purple | `#6B21A8` | Secondary blocks, backgrounds |
+| Black | `#000000` | Grid lines, silhouettes, borders |
+| Cream | `#FEF3C7` | Background, negative space |
+| Gold | `#FBBF24` | Small accents, stars, details |
+| Deep Red | `#B91C1C` | Occasional emphasis (Death, Devil, etc.) |
+| Off-White | `#FFFBEB` | Card faces, text areas |
+
+All cards use the same limited palette, black grid lines, and geometric rectangular composition.
 
 ## Getting Started
 
