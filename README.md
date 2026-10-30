@@ -2,6 +2,8 @@
 
 A three-card tarot reading web app with a Halloween theme. Full 78-card deck (22 Major + 56 Minor Arcana).
 
+**Status: Deployed to Vercel.**
+
 ## Card Art Style
 
 **Geometric block composition with Halloween color palette**
@@ -21,17 +23,16 @@ All 78 cards use a consistent style of rectangular color blocks, simplified geom
 
 The four reference cards (The Fool, The Magician, Death, The World) are the exact approved images. The remaining 18 Major Arcana and all 56 Minor Arcana were generated to match the same geometric block style and color system.
 
-## Deploy to Vercel (recommended)
+## Deployment
 
-1. Go to **[vercel.com/new](https://vercel.com/new)** and import this GitHub repo: `flor-g/Tarot`
-   - Direct import link: [Import flor-g/Tarot](https://vercel.com/new/import?s=https://github.com/flor-g/Tarot)
-2. Framework preset should auto-detect as **Next.js**. Click Deploy.
-3. After the project is created, go to **Settings → Environment Variables** and add:
-   - Name: `XAI_API_KEY`
-   - Value: your key from [console.x.ai](https://console.x.ai)
-4. Redeploy (or push any commit) so the variable is available.
+The app is already deployed on Vercel (imported from `flor-g/Tarot`).
 
-The app will be live at a `*.vercel.app` URL. Custom domains can be added later in the Vercel dashboard.
+- Framework: Next.js
+- To update the live site: push to `main` (Vercel auto-deploys)
+- Environment variable required for interpretations:
+  - Name: `XAI_API_KEY`
+  - Value: your key from [console.x.ai](https://console.x.ai)
+  - Set it in Vercel → Project Settings → Environment Variables, then redeploy if needed
 
 ## Local development
 
@@ -54,9 +55,12 @@ XAI_API_KEY=xai-your-key-here
 
 - `public/cards/` — 78 tarot card images (Major + Minor Arcana)
 - `src/data/tarot.ts` — full card data (names, keywords, upright/reversed meanings)
-- `src/app/page.tsx` — main reading interface
+- `src/app/page.tsx` — main reading interface (with starfield, moon, card flip animations)
 - `src/app/api/interpret/route.ts` — interpretation API route
+- `src/app/globals.css` — Halloween atmospheric styles
 
-## Next Steps
-- Add your `XAI_API_KEY` to enable real interpretations
-- Deploy to Vercel
+## Recent Updates
+
+- Full 78-card geometric Halloween Mondrian deck
+- Polished UI: Creepster/Cinzel fonts, animated starfield + moon, 3D card flip reveal, staggered entrance
+- Deployed to Vercel
