@@ -20,7 +20,19 @@ A mystical three-card Major Arcana tarot reading web app with a Halloween theme.
 
 All cards use the same limited palette, black grid lines, and geometric rectangular composition.
 
-## Getting Started
+## Deploy to Vercel (recommended)
+
+1. Go to **[vercel.com/new](https://vercel.com/new)** and import this GitHub repo: `flor-g/Tarot`
+   - Direct import link: [Import flor-g/Tarot](https://vercel.com/new/import?s=https://github.com/flor-g/Tarot)
+2. Framework preset should auto-detect as **Next.js**. Click Deploy.
+3. After the project is created, go to **Settings → Environment Variables** and add:
+   - Name: `XAI_API_KEY`
+   - Value: your key from [console.x.ai](https://console.x.ai)
+4. Redeploy (or push any commit) so the variable is available.
+
+The app will be live at a `*.vercel.app` URL. Custom domains can be added later in the Vercel dashboard.
+
+## Local development (optional)
 
 ```bash
 npm install
@@ -29,46 +41,12 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-## Setting up the Grok / xAI API Key
-
-Interpretations use the xAI API. You need an API key from [console.x.ai](https://console.x.ai).
-
-1. Create an account / sign in at [console.x.ai](https://console.x.ai)
-2. Add credits / set up billing
-3. Create an API key on the API Keys page
-4. Copy it immediately (shown only once)
-
-### Local development
-Copy `.env.example` to `.env.local` and fill in your key:
-
-```bash
-cp .env.example .env.local
-# then edit .env.local
-XAI_API_KEY=xai-your-key-here
-```
-
-Next.js automatically loads `.env.local`.
-
-### Deployment (e.g. Vercel)
-Add `XAI_API_KEY` as an environment variable in your project settings (Settings → Environment Variables).
-
-### Cloud computer / Grok session
-If running the app inside a persistent cloud session:
-```bash
-echo 'export XAI_API_KEY="xai-your-key-here"' >> ~/.bashrc
-source ~/.bashrc
-```
-Or put it in a project `.env` and source it.
+Copy `.env.example` to `.env.local` and set `XAI_API_KEY` for local interpretation testing.
 
 ## Image Prompts
-Each card in `src/data/tarot.ts` includes an `imagePrompt` field optimized for AI image generators (Midjourney, Flux, DALL·E, etc.).
-
-Recommended tools:
-- **Flux** (via fal.ai or Replicate) — excellent for consistent style
-- **Midjourney** — strong Halloween atmosphere
-- **Ideogram** — good with text if needed later
+Each card in `src/data/tarot.ts` includes an `imagePrompt` field optimized for AI image generators.
 
 ## Next Steps
-1. Generate card images using the prompts
-2. Deploy to Vercel (remember to set XAI_API_KEY)
-3. Customize the model in `src/app/api/interpret/route.ts` if desired (currently `grok-4`)
+- Customize the model in `src/app/api/interpret/route.ts` if desired (currently `grok-4`)
+- Add a custom domain
+- Further UI polish
