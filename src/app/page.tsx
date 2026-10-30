@@ -64,18 +64,25 @@ export default function Home() {
             {cards.map((drawn, i) => (
               <div
                 key={i}
-                className="bg-black/70 border border-orange-500/40 rounded-xl p-5 text-center shadow-xl"
+                className="bg-black/70 border border-orange-500/40 rounded-xl p-5 text-center shadow-xl flex flex-col items-center"
               >
-                <div className="text-sm text-purple-300 uppercase tracking-widest mb-2">
+                <div className="text-sm text-purple-300 uppercase tracking-widest mb-3">
                   {drawn.position}
                 </div>
-                <div className="text-2xl font-bold text-orange-300 mb-1">
+                <img
+                  src={drawn.card.image}
+                  alt={drawn.card.name}
+                  className={`w-48 h-auto rounded-lg shadow-lg mb-3 transition-transform duration-500 ${
+                    drawn.reversed ? "rotate-180" : ""
+                  }`}
+                />
+                <div className="text-xl font-bold text-orange-300 mb-1">
                   {drawn.card.name}
                 </div>
                 <div className="text-sm text-orange-400">
                   {drawn.reversed ? "Reversed" : "Upright"}
                 </div>
-                <div className="mt-3 text-xs text-purple-200">
+                <div className="mt-2 text-xs text-purple-200">
                   {drawn.card.keywords.join(" · ")}
                 </div>
               </div>
