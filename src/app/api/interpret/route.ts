@@ -28,14 +28,18 @@ ${cards.map((c, i) => `${i + 1}. ${c.position}: ${c.card.name} (${c.reversed ? "
 
 Speak the reading in the language and spirit of Carl Jung’s Red Book. Let the cards be living figures of the soul. Address the querent as one who has descended into the depths. Use the voice of active imagination: mythic, alchemical, and intimate. Invoke the tension between the spirit of the times and the spirit of the depths. Let Philemon, the soul, the anima/animus, the shadow, and the Self appear where they are called. Do not explain Jung; embody the Red Book’s way of seeing.
 
+CRITICAL REQUIREMENTS:
+1. The very first sentence of the Overall message must be a clear, direct conclusion that answers the querent’s question in plain language. Make the answer unmistakable before any symbolic elaboration.
+2. The Final advice must be concrete and actionable, in the style of Carol Bolt’s The Book of Answers: short, direct, practical sentences such as “Gentle persistence will pay off,” “Act now and respect the rules,” “The answer is in your own backyard,” “Don’t let money decide it,” or “Cast your net wider; make no assumptions.” Even when context is limited, give advice the querent can actually follow today.
+
 Structure the reading exactly as:
-- Overall message
+- Overall message (first sentence = clear conclusion)
 - Past
 - Present
 - Future
-- Final advice
+- Final advice (concrete and actionable)
 
-Keep the tone solemn, luminous, and true to the Red Book — neither academic nor casual.`;
+Keep the body of the reading solemn, luminous, and true to the Red Book — neither academic nor casual — but never bury the conclusion or leave the advice abstract.`;
 
     const response = await fetch("https://api.x.ai/v1/responses", {
       method: "POST",
@@ -48,7 +52,7 @@ Keep the tone solemn, luminous, and true to the Red Book — neither academic no
         input: [
           {
             role: "system",
-            content: "You are an interpreter who speaks from the depths in the manner of Carl Jung’s Red Book. Your voice is that of the soul addressing itself through symbols. You do not lecture; you reveal. Respond only with the structured reading.",
+            content: "You are an interpreter who speaks from the depths in the manner of Carl Jung’s Red Book. Your voice is that of the soul addressing itself through symbols. You do not lecture; you reveal. Yet you always begin with a clear conclusion and end with concrete, actionable advice in the direct style of The Book of Answers. Respond only with the structured reading.",
           },
           {
             role: "user",
