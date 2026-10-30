@@ -1,4 +1,4 @@
-import { majorArcana, TarotCard } from "@/data/tarot";
+import { fullDeck, TarotCard } from "@/data/tarot";
 
 export interface DrawnCard {
   card: TarotCard;
@@ -7,7 +7,7 @@ export interface DrawnCard {
 }
 
 export function drawThreeCards(): DrawnCard[] {
-  const shuffled = [...majorArcana].sort(() => Math.random() - 0.5);
+  const shuffled = [...fullDeck].sort(() => Math.random() - 0.5);
   const selected = shuffled.slice(0, 3);
 
   const positions: ("Past" | "Present" | "Future")[] = ["Past", "Present", "Future"];

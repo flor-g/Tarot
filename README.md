@@ -1,12 +1,12 @@
 # Halloween Tarot
 
-A three-card Major Arcana tarot reading web app with a Halloween theme.
+A three-card tarot reading web app with a Halloween theme. Full 78-card deck (22 Major + 56 Minor Arcana).
 
 ## Card Art Style
 
 **Geometric block composition with Halloween color palette**
 
-All 22 Major Arcana cards use a consistent style of rectangular color blocks, simplified geometric figures, and Halloween motifs.
+All 78 cards use a consistent style of rectangular color blocks, simplified geometric figures, and Halloween motifs.
 
 ### Color Palette
 
@@ -19,7 +19,7 @@ All 22 Major Arcana cards use a consistent style of rectangular color blocks, si
 | Yellow | `#FBBF24` / `#F59E0B` | Accents, stars, details |
 | Red | `#DC2626` / `#B91C1C` | Emphasis blocks |
 
-The four reference cards (The Fool, The Magician, Death, The World) are the exact approved images. The remaining 18 cards were generated to match the same geometric block style and color system.
+The four reference cards (The Fool, The Magician, Death, The World) are the exact approved images. The remaining 18 Major Arcana and all 56 Minor Arcana were generated to match the same geometric block style and color system.
 
 ## Deploy to Vercel (recommended)
 
@@ -52,12 +52,11 @@ XAI_API_KEY=xai-your-key-here
 
 ## Project Structure
 
-- `public/cards/` — 22 Major Arcana card images
-- `src/data/tarot.ts` — card data (names, keywords, upright/reversed meanings)
+- `public/cards/` — 78 tarot card images (Major + Minor Arcana)
+- `src/data/tarot.ts` — full card data (names, keywords, upright/reversed meanings)
 - `src/app/page.tsx` — main reading interface
 - `src/app/api/interpret/route.ts` — interpretation API route
 
 ## Next Steps
 - Add your `XAI_API_KEY` to enable real interpretations
 - Deploy to Vercel
-- Optionally expand to Minor Arcana later
